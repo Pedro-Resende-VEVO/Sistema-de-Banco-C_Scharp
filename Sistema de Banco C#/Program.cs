@@ -56,14 +56,23 @@ namespace Programa_Banco
         {
             Operacoes objOpera = new Operacoes();
 
-            if (opcao == 0)
+            if (opcao == 1)
             {
-                usuariosList[idSesao]._Saldo = objOpera.inserirValor(usuariosList[idSesao]);
+                usuariosList[idSesao]._Saldo = objOpera.deposito(usuariosList[idSesao]);
             }
-            else if (opcao == 1)
+            else if (opcao == 2)
             {
-                usuariosList[idSesao]._Saldo = objOpera.removerValor(usuariosList[idSesao]);
+                usuariosList[idSesao]._Saldo = objOpera.saque(usuariosList[idSesao]);
             }
+
+            Console.WriteLine($"Saldo atualizado: {objOpera.valorSaldo(usuariosList[idSesao])}");
+        }
+
+        public void perfilVisu()
+        {
+            Console.WriteLine($"Nome: {usuariosList[idSesao]._Nome}");
+            Console.WriteLine($"Senha: {usuariosList[idSesao]._Senha}");
+            Console.WriteLine($"Saldo atual: {usuariosList[idSesao]._Saldo}");
         }
     }
 
@@ -74,18 +83,47 @@ namespace Programa_Banco
             return usu._Saldo;
         }
 
-        public double inserirValor(Usuario usu)
+        public double deposito(Usuario usu)
         {
-            Console.Write("Qual valor deseja inserir? ");
-            double resp = Convert.ToDouble(Console.ReadLine());
-            return usu._Saldo + resp;
+            try
+            {
+                Console.Write($"Saldo atual: {valorSaldo(usu)}\nQual valor deseja inserir? ");
+                double resp = Convert.ToDouble(Console.ReadLine());
+
+                return usu._Saldo + resp;
+            }
+            catch
+            {
+                Console.WriteLine("Resposta inválida, favor tentar novamente");
+            }
+
+            throw new Exception("Passou do Catch");
         }
 
-        public double removerValor(Usuario usu)
+        public double saque(Usuario usu)
         {
-            Console.Write("Qual valor deseja inserir? ");
-            double resp = Convert.ToDouble(Console.ReadLine());
-            return usu._Saldo + resp;
+            try
+            {
+                while (true)
+                {
+                    Console.Write($"Saldo atual: {valorSaldo(usu)}\nQual valor deseja retirar?");
+                    double resp = Convert.ToDouble(Console.ReadLine());
+                    if (resp > usu._Saldo)
+                    {
+                        Console.WriteLine("Valor passou do limite, favor tentar novamente");
+                    }
+                    else
+                    {
+                        return usu._Saldo + resp;
+                    }
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Resposta inválida, favor tentar novamente");
+            }
+
+            throw new Exception("Passou do Catch");
         }
     }
 
@@ -95,22 +133,134 @@ namespace Programa_Banco
         static void Main(string[] args)
         {
             Conta conta = new Conta();
+            bool cond = true;
+            bool cond2 = true;
 
-            conta.criarConta("Sese", "123", 120);
-
-            Console.WriteLine(conta.usuariosList[0]._Nome);
-
-            while (true)
+            if (true == cond)
             {
-                //conta.usarSaldo(0);
-                int i = Convert.ToInt32(Console.ReadLine());
-
-                if (i == 0)
-                {
-                    break;
-                }
-
+                throw new Exception("teste");
             }
+
+            while (cond == true)
+            {
+                Console.WriteLine("---Bem vindo ao Banco Sesas---\n");
+                Console.WriteLine("-Qual operação deseja fazer ?-\n");
+                Console.WriteLine("1) Logar - 2)Cadastrar - 3) Sair");
+                Console.WriteLine("--------------------------------");
+                Console.Write("RESPOSTA: ");
+
+                try
+                {
+                    int resp = Convert.ToInt32(Console.ReadLine());
+
+                    switch (resp)
+                    {
+                        case 1:
+                            while (cond2 == true)
+                            {
+                                Console.WriteLine("--------------Entrar--------------");
+                                Console.WriteLine("Insira as informações solicitadas:\n");
+                                Console.WriteLine("Nome: ");
+                                string nomeLog = Console.ReadLine()!;
+                                Console.WriteLine("Senha: ");
+                                string senhaLog = Console.ReadLine()!;
+                                if (conta.logarConta(nomeLog, senhaLog) == true)
+                                {
+                                    Console.WriteLine("Acessando conta, aperte qualquer tecla para voltar ao menu");
+                                    Console.ReadLine();
+                                    Acesso();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Informações erradas, deseja tentar novamente?\n1) Sim - 2) Não\nRESPOSTA: ");
+                                    int continar = Convert.ToInt32(Console.ReadLine());
+
+                                    if (continar == 2)
+                                    {
+                                        cond2 = false;
+                                    }
+                                }
+                            }
+                            break;
+                        case 2:
+                            Console.WriteLine("-------------Cadastro-------------");
+                            Console.WriteLine("Insira as informações solicitadas:\n");
+                            Console.WriteLine("Nome: ");
+                            string nomeCad = Console.ReadLine()!;
+                            Console.WriteLine("Senha: ");
+                            string senhaCad = Console.ReadLine()!;
+                            conta.criarConta(nomeCad, senhaCad, 0);   //Cria a conta com saldo zerado
+                            Console.WriteLine("Cadastro concluído, aperte qualquer tecla para voltar ao menu");
+                            Console.ReadLine();
+                            break;
+                        case 3:
+                            cond = false;
+                            break;
+                        default:
+                            Console.WriteLine("Operação inválida, favor tentar novamente");
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"{e}\nFavor inserir o NÚMERO correspondente a operação, tente novamente:");
+                }
+            }
+
+            Console.WriteLine("Obrigado por usar, vejo você na próximaa ;)");
+        }
+
+
+        static void Acesso()
+        {
+            Conta conta = new Conta();
+            bool cond = true;
+
+            while (cond == true)
+            {
+                Console.WriteLine("------------------Banco Sesas-----------------\n");
+                Console.WriteLine($"---------Qual operação deseja fazer?---------\n");
+                Console.WriteLine("1) Ver perfil - 2) Deposito - 3) Saque - 4) Sair");
+                Console.WriteLine("------------------------------------------------");
+                Console.Write("RESPOSTA: ");
+
+                try
+                {
+                    int resp = Convert.ToInt32(Console.ReadLine());
+
+                    switch (resp)
+                    {
+                        case 1:
+                            Console.WriteLine("--------------Perfil--------------");
+                            conta.perfilVisu();
+                            Console.WriteLine("----------------------------------");
+                            break;
+                        case 2:
+                            Console.WriteLine("-------------Depósito-------------");
+                            conta.operacoes(resp);
+                            break;
+                        case 3:
+                            Console.WriteLine("---------------Saque--------------");
+                            conta.operacoes(resp);
+                            break;
+                        case 4:
+                            cond = false;
+                            break;
+                        default:
+                            Console.WriteLine("Operação inválida, favor tentar novamente");
+                            break;
+                    }
+
+                    Console.WriteLine("Aperte qualquer tecla para voltar ao menu");
+                    Console.ReadLine();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"{e}\nFavor inserir o NÚMERO correspondente a operação, tente novamente:");
+                }
+            }
+
+            Console.WriteLine("Obrigado por usar, vejo você na próximaa ;)");
         }
     }
 }
