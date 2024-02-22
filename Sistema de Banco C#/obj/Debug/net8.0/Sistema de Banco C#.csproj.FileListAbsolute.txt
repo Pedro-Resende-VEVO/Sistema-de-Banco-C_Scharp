@@ -1,0 +1,15 @@
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\bin\Debug\net8.0\Sistema de Banco C#.exe
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\bin\Debug\net8.0\Sistema de Banco C#.deps.json
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\bin\Debug\net8.0\Sistema de Banco C#.runtimeconfig.json
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\bin\Debug\net8.0\Sistema de Banco C#.dll
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\bin\Debug\net8.0\Sistema de Banco C#.pdb
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\obj\Debug\net8.0\Sistema de Banco C#.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\obj\Debug\net8.0\Sistema de Banco C#.AssemblyInfoInputs.cache
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\obj\Debug\net8.0\Sistema de Banco C#.AssemblyInfo.cs
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\obj\Debug\net8.0\Sistema de Banco C#.csproj.CoreCompileInputs.cache
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\obj\Debug\net8.0\Sistema de Banco C#.sourcelink.json
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\obj\Debug\net8.0\Sistema de Banco C#.dll
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\obj\Debug\net8.0\refint\Sistema de Banco C#.dll
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\obj\Debug\net8.0\Sistema de Banco C#.pdb
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\obj\Debug\net8.0\Sistema de Banco C#.genruntimeconfig.cache
+c:\Users\pedro\OneDrive\Documentos\C#\Projetos C#\Sistema de Banco C#\Sistema de Banco C#\obj\Debug\net8.0\ref\Sistema de Banco C#.dll

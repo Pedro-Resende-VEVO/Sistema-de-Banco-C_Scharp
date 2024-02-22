@@ -9,50 +9,60 @@ namespace Programa_Banco
     class Usuario
     {
         public string _Nome { get; set; }
-        public int _Idade { get; set; }
+        public string _Senha { get; set; }
         public double _Saldo { get; set; }
 
-        public Usuario(string nome, int idade, double saldo)
+        public Usuario(string nome, string senha, double saldo)
         {
             _Nome = nome;
-            _Idade = idade;
+            _Senha = senha;
             _Saldo = saldo;
         }
     }
 
     abstract class Banco
     {
-        public List <Usuario> usuariosList = new List<Usuario>();
+        public List<Usuario> usuariosList = new List<Usuario>();
 
-        public void criarConta(string nome, int idade, double saldo)
+        public void criarConta(string nome, string senha, double saldo)
         {
-            Usuario obj = new Usuario(nome, idade, saldo);
+            Usuario obj = new Usuario(nome, senha, saldo);
             usuariosList.Add(obj);
         }
 
-        public abstract void usarSaldo(int opcao);
+        public abstract bool logarConta(string nome, string senha);
+
+        public abstract void operacoes(int opcao);
     }
 
     class Conta : Banco
     {
-        Usuario usu;
+        private int idSesao;
 
-        public Conta(int indexSesao)
+        public override bool logarConta(string nome, string senha)
         {
-            usu = usuariosList[indexSesao]; //Pega da lista do Banco, se eu usar "this", vou estar usando a lista herdada
+            for (int i = 0; i < usuariosList.Count; i++)
+            {
+                if (usuariosList[i]._Nome == nome && usuariosList[i]._Senha == senha)
+                {
+                    idSesao = i;
+                    return true;
+                }
+            }
+            return false;
         }
 
-        public override void usarSaldo(int opcao)
+        public override void operacoes(int opcao)
         {
-            Operacoes objOpera = new Operacoes(); 
+            Operacoes objOpera = new Operacoes();
 
             if (opcao == 0)
             {
-                usu._Saldo = objOpera.inserirValor(usu);
+                usuariosList[idSesao]._Saldo = objOpera.inserirValor(usuariosList[idSesao]);
             }
             else if (opcao == 1)
             {
-                usu._Saldo = objOpera.removerValor(usu);
+                usuariosList[idSesao]._Saldo = objOpera.removerValor(usuariosList[idSesao]);
             }
         }
     }
@@ -67,14 +77,14 @@ namespace Programa_Banco
         public double inserirValor(Usuario usu)
         {
             Console.Write("Qual valor deseja inserir? ");
-            double resp = double.Parse(Console.ReadLine());
+            double resp = Convert.ToDouble(Console.ReadLine());
             return usu._Saldo + resp;
         }
 
         public double removerValor(Usuario usu)
         {
             Console.Write("Qual valor deseja inserir? ");
-            double resp = double.Parse(Console.ReadLine());
+            double resp = Convert.ToDouble(Console.ReadLine());
             return usu._Saldo + resp;
         }
     }
@@ -84,12 +94,22 @@ namespace Programa_Banco
     {
         static void Main(string[] args)
         {
-            Conta conta = new Conta(0);
-            Usuario oi = new Usuario("oi", 12, 120);
+            Conta conta = new Conta();
 
-            while (true) 
+            conta.criarConta("Sese", "123", 120);
+
+            Console.WriteLine(conta.usuariosList[0]._Nome);
+
+            while (true)
             {
-                conta.usarSaldo(0);
+                //conta.usarSaldo(0);
+                int i = Convert.ToInt32(Console.ReadLine());
+
+                if (i == 0)
+                {
+                    break;
+                }
+
             }
         }
     }
