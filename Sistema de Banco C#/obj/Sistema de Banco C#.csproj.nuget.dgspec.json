@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\pedro\\OneDrive\\Documentos\\C#\\Projetos C#\\Sistema de Banco C#\\Sistema de Banco C#\\Sistema de Banco C#.csproj": {}
+    "C:\\Users\\pedro\\OneDrive\\Documentos\\C#\\Projetos C#\\Sistema de Banco C#\\Sistema de Banco C#\\Sistema de Banco C#.csproj": {}
   },
   "projects": {
-    "c:\\Users\\pedro\\OneDrive\\Documentos\\C#\\Projetos C#\\Sistema de Banco C#\\Sistema de Banco C#\\Sistema de Banco C#.csproj": {
+    "C:\\Users\\pedro\\OneDrive\\Documentos\\C#\\Projetos C#\\Sistema de Banco C#\\Sistema de Banco C#\\Sistema de Banco C#.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\pedro\\OneDrive\\Documentos\\C#\\Projetos C#\\Sistema de Banco C#\\Sistema de Banco C#\\Sistema de Banco C#.csproj",
+        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Documentos\\C#\\Projetos C#\\Sistema de Banco C#\\Sistema de Banco C#\\Sistema de Banco C#.csproj",
         "projectName": "Sistema de Banco C#",
-        "projectPath": "c:\\Users\\pedro\\OneDrive\\Documentos\\C#\\Projetos C#\\Sistema de Banco C#\\Sistema de Banco C#\\Sistema de Banco C#.csproj",
+        "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\C#\\Projetos C#\\Sistema de Banco C#\\Sistema de Banco C#\\Sistema de Banco C#.csproj",
         "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\pedro\\OneDrive\\Documentos\\C#\\Projetos C#\\Sistema de Banco C#\\Sistema de Banco C#\\obj\\",
+        "outputPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\C#\\Projetos C#\\Sistema de Banco C#\\Sistema de Banco C#\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
