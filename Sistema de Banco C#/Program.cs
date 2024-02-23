@@ -24,22 +24,6 @@ namespace Programa_Banco
     {
         public List<Usuario> usuariosList = new List<Usuario>();
 
-        public void criarConta(string nome, string senha, double saldo)
-        {
-            Usuario obj = new Usuario(nome, senha, saldo);
-            usuariosList.Add(obj);
-        }
-        public virtual int logarConta(string nome, string senha)
-        {
-            for (int i = 0; i < usuariosList.Count; i++)
-            {
-                if (usuariosList[i]._Nome == nome && usuariosList[i]._Senha == senha)
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
         public abstract void operacoes(int opcao);
     }
 
@@ -47,9 +31,23 @@ namespace Programa_Banco
     {
         private int idSesao;
 
-        public override int logarConta(string nome, string senha)
+        public void criarConta(string nome, string senha, double saldo)
         {
-            return idSesao =  base.logarConta(nome, senha);
+            Usuario obj = new Usuario(nome, senha, saldo);
+            usuariosList.Add(obj);
+        }
+        
+        public bool logarConta(string nome, string senha)
+        {
+            for (int i = 0; i < usuariosList.Count; i++)
+            {
+                if (usuariosList[i]._Nome == nome && usuariosList[i]._Senha == senha)
+                {
+                    idSesao = i;
+                    return true;
+                }
+            }
+            return false;
         }
 
         public override void operacoes(int opcao)
@@ -160,7 +158,7 @@ namespace Programa_Banco
                                 string nomeLog = Console.ReadLine()!;
                                 Console.WriteLine("Senha: ");
                                 string senhaLog = Console.ReadLine()!;
-                                if (conta.logarConta(nomeLog, senhaLog) != -1)
+                                if (conta.logarConta(nomeLog, senhaLog) == true)
                                 {
                                     Console.WriteLine("Acessando conta, aperte qualquer tecla para voltar ao menu");
                                     Console.ReadLine();
