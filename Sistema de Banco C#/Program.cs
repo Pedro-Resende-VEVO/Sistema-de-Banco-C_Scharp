@@ -22,14 +22,8 @@ namespace Programa_Banco
 
     abstract class Banco
     {
-        public List<Usuario> usuariosList = new List<Usuario>();
 
-        public void criarConta(string nome, string senha, double saldo)
-        {
-            Usuario obj = new Usuario(nome, senha, saldo);
-            usuariosList.Add(obj);
-        }
-
+        public abstract void criarConta(string nome, string senha, double saldo);
         public abstract bool logarConta(string nome, string senha);
 
         public abstract void operacoes(int opcao);
@@ -37,8 +31,15 @@ namespace Programa_Banco
 
     class Conta : Banco
     {
-        private int idSesao;
+        public int idSesao;
 
+        public List<Usuario> usuariosList = new List<Usuario>();
+
+        public override void criarConta(string nome, string senha, double saldo)
+        {
+            Usuario obj = new Usuario(nome, senha, saldo);
+            usuariosList.Add(obj);
+        }
         public override bool logarConta(string nome, string senha)
         {
             for (int i = 0; i < usuariosList.Count; i++)
@@ -56,11 +57,12 @@ namespace Programa_Banco
         {
             Operacoes objOpera = new Operacoes();
 
-            if (opcao == 1)
+            if (opcao == 2)
             {
                 usuariosList[idSesao]._Saldo = objOpera.deposito(usuariosList[idSesao]);
             }
-            else if (opcao == 2)
+            else if (opcao == 32
+            )
             {
                 usuariosList[idSesao]._Saldo = objOpera.saque(usuariosList[idSesao]);
             }
@@ -114,7 +116,7 @@ namespace Programa_Banco
                     }
                     else
                     {
-                        return usu._Saldo + resp;
+                        return usu._Saldo - resp;
                     }
                 }
             }
@@ -135,11 +137,6 @@ namespace Programa_Banco
             Conta conta = new Conta();
             bool cond = true;
             bool cond2 = true;
-
-            if (true == cond)
-            {
-                throw new Exception("teste");
-            }
 
             while (cond == true)
             {
@@ -168,7 +165,8 @@ namespace Programa_Banco
                                 {
                                     Console.WriteLine("Acessando conta, aperte qualquer tecla para voltar ao menu");
                                     Console.ReadLine();
-                                    Acesso();
+                                    cond2 = false;
+                                    Acesso(conta);
                                 }
                                 else
                                 {
@@ -201,9 +199,9 @@ namespace Programa_Banco
                             break;
                     }
                 }
-                catch (Exception e)
+                catch
                 {
-                    Console.WriteLine($"{e}\nFavor inserir o NÚMERO correspondente a operação, tente novamente:");
+                    Console.WriteLine($"Favor inserir o NÚMERO correspondente a operação, tente novamente:");
                 }
             }
 
@@ -211,9 +209,8 @@ namespace Programa_Banco
         }
 
 
-        static void Acesso()
+        static void Acesso(Conta conta)
         {
-            Conta conta = new Conta();
             bool cond = true;
 
             while (cond == true)
@@ -254,9 +251,9 @@ namespace Programa_Banco
                     Console.WriteLine("Aperte qualquer tecla para voltar ao menu");
                     Console.ReadLine();
                 }
-                catch (Exception e)
+                catch
                 {
-                    Console.WriteLine($"{e}\nFavor inserir o NÚMERO correspondente a operação, tente novamente:");
+                    Console.WriteLine($"Favor inserir o NÚMERO correspondente a operação, tente novamente:");
                 }
             }
 
