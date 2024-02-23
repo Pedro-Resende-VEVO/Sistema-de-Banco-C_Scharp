@@ -163,7 +163,7 @@ namespace Programa_Banco
                                 string nomeLog = Console.ReadLine()!;
                                 Console.WriteLine("Senha: ");
                                 string senhaLog = Console.ReadLine()!;
-                                if (conta.logarConta(nomeLog, senhaLog) == true)
+                                if (conta.logarConta(nomeLog, senhaLog) != -1)
                                 {
                                     Console.WriteLine("Acessando conta, aperte qualquer tecla para voltar ao menu");
                                     Console.ReadLine();
