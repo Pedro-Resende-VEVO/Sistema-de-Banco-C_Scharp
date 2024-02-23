@@ -24,7 +24,7 @@ namespace Programa_Banco
     {
         public List<Usuario> usuariosList = new List<Usuario>();
 
-        public int idSesao;
+        private int idSesao;
 
         public void criarConta(string nome, string senha, double saldo)
         {
@@ -48,6 +48,7 @@ namespace Programa_Banco
 
     class Conta : Banco
     {
+        private int idSesao;
         public override void operacoes(int opcao)
         {
             Operacoes objOpera = new Operacoes();
