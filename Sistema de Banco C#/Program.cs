@@ -31,17 +31,17 @@ namespace Programa_Banco
             Usuario obj = new Usuario(nome, senha, saldo);
             usuariosList.Add(obj);
         }
-        public bool logarConta(string nome, string senha)
+        public virtual int logarConta(string nome, string senha)
         {
             for (int i = 0; i < usuariosList.Count; i++)
             {
                 if (usuariosList[i]._Nome == nome && usuariosList[i]._Senha == senha)
                 {
                     idSesao = i;
-                    return true;
+                    return i;
                 }
             }
-            return false;
+            return -1;
         }
         public abstract void operacoes(int opcao);
     }
@@ -49,6 +49,12 @@ namespace Programa_Banco
     class Conta : Banco
     {
         private int idSesao;
+
+        public override int logarConta(string nome, string senha)
+        {
+            return idSesao =  base.logarConta(nome, senha);
+        }
+
         public override void operacoes(int opcao)
         {
             Operacoes objOpera = new Operacoes();
