@@ -24,8 +24,6 @@ namespace Programa_Banco
     {
         public List<Usuario> usuariosList = new List<Usuario>();
 
-        private int idSesao;
-
         public void criarConta(string nome, string senha, double saldo)
         {
             Usuario obj = new Usuario(nome, senha, saldo);
@@ -37,7 +35,6 @@ namespace Programa_Banco
             {
                 if (usuariosList[i]._Nome == nome && usuariosList[i]._Senha == senha)
                 {
-                    idSesao = i;
                     return i;
                 }
             }
